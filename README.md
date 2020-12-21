@@ -1,3 +1,5 @@
 # script.realdebrid
 
 Unofficial RealDebrid client. Manage your torrents, unrestricted links and view host statuses all within Kodi
+
+Taken from https://github.com/ptom98/PTOM/tree/master/script.realdebrid
