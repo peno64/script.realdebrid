@@ -15,12 +15,12 @@
 # You should have received a copy of the GNU General Public License
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-import xbmc
+import xbmc, xbmcgui
 
 def main():
     parts=str(xbmc.getInfoLabel('ListItem.FileNameAndPath')).replace(xbmc.getInfoLabel('ListItem.Path')+"?", "").split("&")
     parts=parts[0].replace("url=", "")
-    
+
     play = ("plugin://script.realdebrid/" +
         "?url=" + parts +
         "&mode=" + str(5) +

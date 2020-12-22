@@ -19,7 +19,7 @@
 '''
 
 
-import os,xbmc,xbmcaddon,xbmcplugin,xbmcgui,xbmcvfs
+import os,xbmc, xbmcvfs,xbmcaddon,xbmcplugin,xbmcgui,xbmcvfs
 
 
 lang = xbmcaddon.Addon().getLocalizedString
@@ -80,13 +80,16 @@ deleteFile = xbmcvfs.delete
 
 listDir = xbmcvfs.listdir
 
-transPath = xbmc.translatePath
+try:
+    translatePath = xbmcvfs.translatePath
+except AttributeError:
+    translatePath = xbmc.translatePath
 
-skinPath = xbmc.translatePath('special://skin/')
+skinPath = translatePath('special://skin/')
 
-addonPath = xbmc.translatePath(addonInfo('path'))
+addonPath = translatePath(addonInfo('path'))
 
-dataPath = xbmc.translatePath(addonInfo('profile')).decode('utf-8')
+dataPath = translatePath(addonInfo('profile'))
 
 settingsFile = os.path.join(dataPath, 'settings.xml')
 
@@ -154,10 +157,6 @@ def infoDialog(message, heading=addonInfo('name'), icon=addonIcon(), time=3000):
     except: execute("Notification(%s,%s, %s, %s)" % (heading, message, time, icon))
 
 
-def yesnoDialog(line1, line2, line3, heading=addonInfo('name'), nolabel='', yeslabel=''):
-    return dialog.yesno(heading, line1, line2, line3, nolabel, yeslabel)
-
-
 def selectDialog(list, heading=addonInfo('name')):
     return dialog.select(heading, list)
 
@@ -177,7 +176,7 @@ def refresh():
 
 
 def idle():
-    return execute('Dialog.Close(busydialog)')
+    return execute('Dialog.Close(busydialognocancel)')
 
 
 def queueItem():

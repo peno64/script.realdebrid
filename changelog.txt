@@ -1,3 +1,9 @@
+v0.6.0 22/12/2020
+- several fixes
+- added VPN info
+- made it run on Matrix (Python 3)
+v0.5.0
+- added "Play using RealDebrid" to context menu
 v0.4.1 24/03/2018
 - added "Play using RealDebrid" into context menu for videos
 
